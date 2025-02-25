@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ManagerInfoRepository extends JpaRepository<ManagerInfo, Integer> {
 
+    ManagerInfo findByEmailAndId(String email, int id);
 
     
 }

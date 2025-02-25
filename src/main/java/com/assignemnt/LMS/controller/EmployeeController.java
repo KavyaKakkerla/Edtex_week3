@@ -13,6 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
+@CrossOrigin(origins= "http://localhost:4200")
+
 public class EmployeeController {
 
     @Autowired
@@ -30,6 +32,12 @@ public class EmployeeController {
         System.out.println(leaveApplication.toString());
         return employeeInfoService.applyLeave(employeeId,leaveApplication);
     }
+    @PostMapping("/delete-leave/{employeeId}")
+    public LeaveResponse deleteLeave(@PathVariable Long employeeId,@RequestBody LeaveApplication leaveApplication) {
+        System.out.println(employeeId);
+        System.out.println(leaveApplication.toString());
+        return employeeInfoService.deleteLeave(employeeId,leaveApplication);
+    }
 
 
     @GetMapping("/track-leaves/{employeeId}")
@@ -42,6 +50,16 @@ public class EmployeeController {
     public List<LeaveApplication> getLeaveHistory(@PathVariable Long employeeId) {
         return employeeInfoService.getLeaveHistory(employeeId);
     }
+    @PutMapping("/update-leave/{employeeId}")
+    public LeaveResponse updateLeave(@PathVariable Long employeeId, @RequestBody LeaveApplication leaveApplication) {
+        // Log the employee ID and leave application for debugging
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Leave Application: " + leaveApplication);
+
+        // Call the service method to process the update
+        return employeeInfoService.updateLeave(employeeId, leaveApplication);
+    }
+
 
 
 }

@@ -19,6 +19,8 @@ public interface LeaveApplicationRepository extends JpaRepository<LeaveApplicati
 
     List<LeaveApplication> findByStatus(String status);
 
+    @Query(value = "select * from leave_applications where employee_id=:employeeId and id=:id", nativeQuery = true)
+    LeaveApplication findByEmployeeIdAndId(@Param("employeeId") Long employeeId, @Param("id") Long id);
 
 
     // Fetch leave applications for an employee filtered by status

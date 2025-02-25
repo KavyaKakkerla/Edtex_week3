@@ -9,6 +9,9 @@ public interface IEmployeeInfoService {
 
     // Method to apply for leave
     LeaveResponse applyLeave(Long employeeId, LeaveApplication leaveApplication);
+    LeaveResponse deleteLeave(Long employeeId, LeaveApplication leaveApplication);
+    LeaveResponse updateLeave(Long employeeId, LeaveApplication leaveApplication);
+
 
     // Method to track leave applications by employee ID
     List<LeaveApplication> getLeaveApplicationsByEmployee(Long employeeId);
